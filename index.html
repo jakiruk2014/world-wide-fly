@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking</title>
     <!-- Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
@@ -50,21 +51,26 @@
             </div>
             <div class="input-group f-class">
                 <div>
-                    <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <label for="" id="case-total">First Class (£150)</label>
+                    <input id="case-count" class="inp-style inp-width" type="number" name="">
+                   
                 </div>
                 <div class="plus-minus-btn">
-                    <p>+ -</p>
+                    
+                    <button id="btn-plus">+</button>
+                    <button id="btn-mins">-</button>
                 </div>
             </div>
             
             <div class="input-group f-class">
                 <div>
-                    <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <label for="" id="economy-total">Economy ($100)</label>
+                    <input id="economy-count" class="inp-style inp-width" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
+                     
+                    <button id="economy-plus">+</button>
+                    <button id="economy-mins">-</button>
                 </div>
             </div>
             <div class="calculations">
@@ -73,7 +79,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id="sub-total">£500</p>
                     </div>
                 </div>
 
@@ -82,7 +88,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p>£50</p>
                     </div>
                 </div>
                 <hr>
@@ -91,7 +97,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>£550</p>
                     </div>
                 </div>
             </div>
@@ -102,9 +108,61 @@
             <h1>discover <br> around the world</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
         </div>
+        <script>
+            //first class +-
+            document.getElementById("btn-plus").addEventListener('click' ,function(){
+            const caseInput = document.getElementById('case-count');
+            const caseCount = parseInt(caseInput.value);
+            const caseNewCount = caseCount + 1;
+            caseInput.value = caseNewCount;
+            const caseTotal = caseNewCount *150;
+            document.getElementById('case-total').innerText = 'First Class £' + caseTotal;
+          
+            });
+            document.getElementById("btn-mins").addEventListener('click' ,function(){
+            const caseInput = document.getElementById('case-count');
+            const caseCount = parseInt(caseInput.value);
+            const caseNewCount = caseCount - 1;
+            caseInput.value = caseNewCount;
+            const caseTotal = caseNewCount *150;
+            document.getElementById('case-total').innerText = 'First Class £' + caseTotal;
+        });
+        //Economy +-
+             document.getElementById("economy-plus").addEventListener('click' ,function(){
+            const economyInput = document.getElementById('economy-count');
+            const economyCount = parseInt(economyInput.value);
+            const economyNewCount = economyCount + 1;
+            economyInput.value = economyNewCount;
+            const economyTotal = economyNewCount *100;
+            document.getElementById('economy-total').innerText = 'Economy £' + economyTotal;
+        });
+
+        document.getElementById("economy-mins").addEventListener('click' ,function(){
+            const economyInput = document.getElementById('economy-count');
+            const economyCount = parseInt(economyInput.value);
+            const economyNewCount = economyCount - 1;
+            economyInput.value = economyNewCount;
+            const economyTotal = economyNewCount *100;
+            document.getElementById('economy-total').innerText = 'Economy £' + economyTotal;
+        });
+
+                //subtotal
+                   const caseInput = document.getElementById('case-count');
+                    const caseCount = parseInt(caseInput.value);
+
+                    const economyInput = document.getElementById('economy-count');
+                    const economyCount = parseInt(economyInput.value);
+
+                    const totalPrice = economyCount * 150 + caseCount * 100;
+                    document.getElementById('sub-total').innerText = '£' + totalPrice;
+                    
+        
+
+        </script>
     </section>
 
     <!--Thank You-->
+    
 </body>
 
 </html>
